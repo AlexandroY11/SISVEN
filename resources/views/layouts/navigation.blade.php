@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <!-- Logo -->
         <a class="navbar-brand" href="{{ route('dashboard') }}">
-            <img src="{{asset('assets/images/logo.jpeg')}}" alt="logo" style="height: 60px;">
+            <img src="{{asset('assets/images/logo_sisven.jpeg')}}" alt="logo" style="height: 60px;">
         </a>
 
         <!-- Navigation Links -->
