@@ -23,6 +23,7 @@
                 <td>{{ $category->name }}</td>
                 <td>{{ $category->description }}</td>
                 <td> 
+                    <a href="{{ route('categories.edit', ['category' => $category->id])}}" class="btn btn-warning">Edit</a>
                     
                 </td>
             </tr>
