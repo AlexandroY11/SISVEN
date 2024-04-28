@@ -60,17 +60,28 @@ class ProductController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Product $product)
     {
-        //
+        $categories = DB::table('categories')
+            ->orderBy('id')
+            ->get();
+        
+        return view('products.edit', compact('product'), compact('categories'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Product $product)
     {
-        //
+        $product->update($request->all());
+
+        $products = DB::table('products')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->select('products.*', "categories.name as category_name")
+            ->get();
+
+            return redirect()->route('products.index',compact('products'));
     }
 
     /**
