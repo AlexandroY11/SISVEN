@@ -9,6 +9,8 @@ class Detail extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     /**
      * The attributes that are mass assignable.
      *
@@ -20,6 +22,8 @@ class Detail extends Model
         'quantity',
         'price',
     ];
+
+
 
     /**
      * Get the invoice that owns the detail.
