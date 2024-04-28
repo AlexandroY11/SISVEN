@@ -65,8 +65,20 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+
+        if (!$category) {
+            return redirect()->route('categories.index')->with('error', 'The category does not exist.');
+        }
+
+        try {
+            $category->delete();
+
+            return redirect()->route('categories.index')->with('success', 'The category has been deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('categories.index')->with('error', 'Cannot delete the category because it has associated products.');
+        }
     }
 }
