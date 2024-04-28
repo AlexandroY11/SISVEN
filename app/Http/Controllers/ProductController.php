@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
+use GuzzleHttp\Handler\Proxy;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -25,7 +27,11 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = DB::table('categories')
+            ->orderBy('id')
+            ->get();
+
+        return view('products.create', compact('categories'));
     }
 
     /**
@@ -33,7 +39,14 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $products = Product::create($request->all());
+
+        $products = DB::table('products')
+            ->join('categories', 'products.category_id', '=', 'categories.id')
+            ->select('products.*', "categories.name as category_name")
+            ->get();
+
+        return redirect()->route('products.index', compact('products'));
     }
 
     /**

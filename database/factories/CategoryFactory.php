@@ -21,12 +21,10 @@ class CategoryFactory extends Factory
      */
     public function definition()
     {
-
-        $names = ['Grains', 'Dairy', 'Bakery', 'Candies', 'Fruits', 'Vegetables', 'Meats'];
-
         return [
-            'name' => $this->faker->randomElement($names),
+            'name' => $this->faker->unique()->word,
             'description' => $this->faker->sentence,
         ];
     }
+
 }

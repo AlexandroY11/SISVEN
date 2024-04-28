@@ -27,13 +27,13 @@ class DatabaseSeeder extends Seeder
         ]);
 
         // Categorías
-        Category::factory()->count(10)->create();
+        Category::factory()->count(5)->create();
 
         // Productos
         Product::factory()->count(20)->create();
 
         // Modos de pago
-        Paymode::factory()->count(5)->create();
+        // Paymode::factory()->count(5)->create();
 
         // Clientes
         Customer::factory()->count(15)->create();

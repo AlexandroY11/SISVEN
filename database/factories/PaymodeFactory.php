@@ -21,12 +21,11 @@ class PaymodeFactory extends Factory
      */
     public function definition()
     {
-        $names = ['Nequi', 'Bancolombia', 'BBVA', 'Davivienda', 'Banco de Bogotá', 'Banco de Occidente', 'Banco Popular', 'Banco AV Villas', 'Banco Caja Social', 'Banco GNB Sudameris'];
-
         return [
-            'name' => $this->faker->randomElement($names),
+            'name' => $this->faker->unique()->word,
             'observation' => $this->faker->sentence,
         ];
     }
+
 
 }
