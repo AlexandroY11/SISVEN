@@ -87,8 +87,19 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $product = Product::find($id);
+        if (!$product) {
+            return redirect()->route('products.index')->with('error', 'The product does not exist.');
+        }
+
+        try {
+            $product->delete();
+            return redirect()->route('products.index')->with('success', 'The product has been deleted successfully.');
+        } catch (\Exception $e) {
+            return redirect()->route('products.index')->with('error', 'Cannot delete the product because it has associated details.');
+        }
     }
+
 }
