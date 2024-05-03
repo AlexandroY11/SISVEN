@@ -12,10 +12,10 @@
                     <a class="nav-link" href="{{ route('dashboard') }}">{{ __('Dashboard') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('Products') }}</a>
+                    <a class="nav-link" href="{{ route('products.index') }}">{{ __('Products') }}</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{{ __('Categories') }}</a>
+                    <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Categories') }}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">{{ __('Paymodes') }}</a>

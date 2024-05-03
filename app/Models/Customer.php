@@ -9,6 +9,15 @@ class Customer extends Model
 {
     use HasFactory;
 
-    public $timestamps =false;
-    
+    public $timestamps = false;
+
+    protected $fillable = [
+        'document_number',
+        'first_name',
+        'last_name',
+        'address',
+        'birthday',
+        'phone_number',
+        'email',
+    ];
 }
