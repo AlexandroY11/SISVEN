@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\PaymodeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -21,5 +23,8 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('products', ProductController::class);
 Route::resource('categories', CategoryController::class);
+Route::resource('paymodes', PaymodeController::class);
+Route::resource('categories', CustomerController::class);
+
 
 require __DIR__.'/auth.php';

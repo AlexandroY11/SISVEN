@@ -11,7 +11,7 @@ class PaymodeController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
