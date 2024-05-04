@@ -22,7 +22,7 @@ class PaymodeController extends Controller
      */
     public function create()
     {
-        //
+        return view('paymodes.create');
     }
 
     /**
@@ -30,7 +30,9 @@ class PaymodeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $paymodes = Paymode::create($request->all());
+
+        return redirect()->route('paymodes.index', compact('paymodes'));
     }
 
     /**
@@ -44,9 +46,11 @@ class PaymodeController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit( $id)
     {
-        //
+        $paymode = Paymode::find($id, );
+        
+        return view('paymodes.edit', compact('paymode'));
     }
 
     /**
