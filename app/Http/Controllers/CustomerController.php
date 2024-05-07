@@ -22,7 +22,7 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        //
+        return view('customers.create');
     }
 
     /**
@@ -30,7 +30,9 @@ class CustomerController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $customers = Customer::create($request->all());
+
+        return redirect()->route('customers.index', compact('customers'));
     }
 
     /**
