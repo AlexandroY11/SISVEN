@@ -1,27 +1,18 @@
 @extends('layouts.app')
 
-@section('title', 'Añadir Customer')
+@section('title', 'Edit Customers')
 
 @section('content')
 
-<h1>Añadir Customer</h1>
+<h1>Edit Customers{{$customer->name}}</h1>
 
-<form action="{{ route('customers.store')}}" method="POST">
+<form action="{{ route('customers.update', ['customer' => $customer->id]) }}" method="POST">
+    @method('put')
     @csrf
     <div class="mb-3">
         <label for="id" class="form-label">Id</label>
-        <input type="text" class="form-control" id="id" aria-describedby="idHelp" name="id" disabled>
-        <div id="idHelp" class="form-text">Código del Customer *Se crea automáticamente</div>
-    </div>
-
-    <div class="mb-3">
-        <label for="name" class="form-label">Name</label>
-        <select class="form-select" name="paymode_id" id="paymode" required>
-            <option selected disabled value="">Elegir...</option>
-            {{-- @foreach ($mascotas as $mascota) 
-                <option value="{{ $mascota->id }}">{{ $mascota->id }} - {{ $mascota->nombre }}</option>
-            @endforeach --}}
-        </select>
+        <input type="text" class="form-control" id="id" aria-describedby="idHelp" name="id" disabled value="{{$category->id}}">
+        <div id="idHelp" class="form-text">Customer Code</div>
     </div>
 
     <div class="mb-3">
@@ -63,8 +54,8 @@
     </div>
     
     <div class="mt-3">
-        <button type="submit" class="btn btn-primary">Guardar</button>
-        <a href="{{ route('customers.index')}}" class="btn btn-danger">Cancelar</a>
+        <button type="submit" class="btn btn-primary">Update</button>
+        <a href="{{ route('customers.index')}}" class="btn btn-warning">Cancel</a>
     </div>
 </form>
 @endsection
