@@ -13,7 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {        
-
+        $categories = Category::all();
+        return json_encode(compact('categories'));
     }
 
     /**
@@ -21,7 +22,12 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $category = new Category();
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->save();
+
+        return json_encode(compact('category'));
     }
 
     /**
@@ -29,22 +35,39 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $category = Category::find($id);
+        
+        if(is_null($category)){
+            return abort(404);
+        }
+
+        return json_encode(compact('category'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request,$id)
     {
-        //
+        $category = Category::find($id);
+        $category->name = $request->name;
+        $category->description = $request->description;
+        $category->save();
+
+        return json_encode(compact('category'));
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        //
+        $category = Category::find($id);
+        $category->delete();
+
+        $categories = Category::all();
+
+        return json_encode([ 'categories' => $categories, 'success' => true]);
+
     }
 }
