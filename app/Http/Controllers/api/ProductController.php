@@ -16,7 +16,7 @@ class ProductController extends Controller
     {
         $products = DB::table('products')
             ->join('categories', 'categories.id', '=', 'products.category_id')
-            ->select('products.*', 'categories.name')
+            ->select('products.*', 'categories.name as category_name')
             ->get();
 
         return json_encode(compact('products'));
